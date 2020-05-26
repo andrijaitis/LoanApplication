@@ -1,8 +1,7 @@
 <template>
   <div id="PersonalData">
     <h1>Summary</h1>
-
-    <div class="tabblesWrapper">
+    <div v-if="formsReady" class="tabblesWrapper">
       <h2>Personal Data</h2>
       <table>
         <tr>
@@ -39,25 +38,27 @@
         </tr>
       </table>
 
-      <h2>Co borrowers</h2>
-      <table
-        v-for="(borrower, index) in getCoBorrowers"
-        v-bind:key="borrower.id"
-      >
-        <h3 for="">Co-applicant {{ index + 1 }}</h3>
-        <tr>
-          <th>First name</th>
-          <th>{{ borrower.firstName }}</th>
-        </tr>
-        <tr>
-          <th>Last name</th>
-          <th>{{ borrower.lastName }}</th>
-        </tr>
-        <tr>
-          <th>Code</th>
-          <th>{{ borrower.country }}{{ borrower.code }}</th>
-        </tr>
-      </table>
+      <div v-if="getCoBorrowers.length">
+        <h2>Co borrowers</h2>
+        <table
+          v-for="(borrower, index) in getCoBorrowers"
+          v-bind:key="borrower.id"
+        >
+          <h3 for="">Co-applicant {{ index + 1 }}</h3>
+          <tr>
+            <th>First name</th>
+            <th>{{ borrower.firstName }}</th>
+          </tr>
+          <tr>
+            <th>Last name</th>
+            <th>{{ borrower.lastName }}</th>
+          </tr>
+          <tr>
+            <th>Code</th>
+            <th>{{ borrower.country }}{{ borrower.code }}</th>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -66,14 +67,29 @@
 import { mapGetters } from "vuex";
 export default {
   computed: {
-    ...mapGetters(["getCoBorrowers", "getFullPersonalData", "getCalcData"]),
+    ...mapGetters([
+      "getCoBorrowers",
+      "getFullPersonalData",
+      "getCalcData",
+      "getPersonalDataState",
+      "getCoBorrowersState"
+    ]),
     percentage: function() {
       return (100 / this.barData.totalPages) * this.barData.pageNumber;
+    },
+    formsReady: function() {
+      return this.getCoBorrowersState && !this.getPersonalDataState
     }
   },
   data() {
-    return {};
-  }
+    return {
+      // formsReady: false
+    };
+  },
+
+  // mounted() {
+
+  // }
 };
 </script>
 
@@ -105,19 +121,18 @@ export default {
     // tr:nth-child(even) {
     //   background-color: #dddddd;
     // }
-
   }
-      @media screen and (max-width: 767px) {
-      h1 {
-        font-size: 20px;
-        margin: 32px;
-      }
-        .tabblesWrapper {
-    padding-top: 0px;
-    padding-right: 32px;
-    padding-bottom: 32px;
-    padding-left: 32px;
-        }
+  @media screen and (max-width: 767px) {
+    h1 {
+      font-size: 20px;
+      margin: 32px;
     }
+    .tabblesWrapper {
+      padding-top: 0px;
+      padding-right: 32px;
+      padding-bottom: 32px;
+      padding-left: 32px;
+    }
+  }
 }
 </style>

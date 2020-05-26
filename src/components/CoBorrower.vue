@@ -1,7 +1,7 @@
 <template>
   <div id="CoBorrowerData" @keyup="checkForm" @click="checkForm">
     <ValidationObserver ref="observer" v-slot="{ valid, invalid }">
-      <h1>Co-borrower`s</h1>
+       <h1>Co-borrower`s</h1>
       <div class="CoBorrowerDataWrapper">
         <div class="coBorrowersData">
           <div
@@ -13,7 +13,7 @@
               <label class="CoBorrowerData-label">First name *</label>
               <ValidationProvider
                 name="first name"
-                :rules="'required'"
+                :rules="'required|notNumber'"
                 v-slot="{ errors, invalid }"
               >
                 <input
@@ -94,12 +94,15 @@
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import { extend } from "vee-validate";
 
-extend("minName", (value) => {
-  if (value.length >= 2) {
+extend("notNumber", (value) => {
+  function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+  if (!isNumeric(value)) {
     return true;
   }
 
-  return "The {_field_} field must be at least two chars long";
+  return "The {_field_} field must not contain numbers";
 });
 
 extend("min", (value) => {
@@ -153,7 +156,7 @@ export default {
       repeatPassword: "",
       errors: [],
       coBorrowers: [],
-      coBorrowersIndex: 1,
+      coBorrowersIndex: 0,
       education: null,
       position: null,
       maritialStatus: null,
@@ -188,9 +191,13 @@ export default {
       this.coBorrowersIndex = this.coBorrowersIndex + 1;
     },
 
-    removeCoborrower(id) {
-      let elementIndex = this.coBorrowers.findIndex((x) => x.id === id);
-      this.coBorrowers.splice(elementIndex - 1, 1);
+    removeCoborrower(index) {
+      console.log("id",index)
+      // let elementIndex = this.coBorrowers.findIndex((x) => x.id === id);
+      // console.log(elementIndex)
+      // this.coBorrowers.splice(id , 1);
+     this.coBorrowers.splice(index , 1)
+     console.log(this.coBorrowers[index])
     },
   },
 };

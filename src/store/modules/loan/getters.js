@@ -1,7 +1,7 @@
 export default {
   getFormSubmited: state => state.submited,
-  getPersonalData: state => state.personalDataState,
-  getCoBorrowersData: state => state.coBorrowersDataState,
+  getPersonalDataState: state => state.personalDataState,
+  getCoBorrowersState: state => state.coBorrowersDataState,
   getCoBorrowers: state => state.coBorrowers,
   getFullPersonalData: state => state.personalData,
   getCalcData: state => state.calcData,

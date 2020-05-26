@@ -1,7 +1,7 @@
 <template>
   <div id="PersonalData">
     <!-- {{ $v }} -->
-    <!-- {{ $store.getters.getPersonalData }} -->
+    <!-- {{ $store.getters.getPersonalDataState }} -->
     <h1>Personal data of applicant</h1>
     <div class="personalDataWrapper">
       <div class="extendedData">

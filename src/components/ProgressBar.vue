@@ -4,8 +4,8 @@
     <button
       :disabled="
         (!$store.getters.getCalcState && barData.pageNumber == 1) ||
-          ($store.getters.getPersonalData && barData.pageNumber == 2) ||
-          (!$store.getters.getCoBorrowersData && barData.pageNumber == 3)
+          ($store.getters.getPersonalDataState && barData.pageNumber == 2) ||
+          (!$store.getters.getCoBorrowersState && barData.pageNumber == 3)
       "
       v-if="this.barData.totalPages !== this.barData.pageNumber"
       @click="goForward()"
