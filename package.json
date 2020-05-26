@@ -15,7 +15,6 @@
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/vue-fontawesome": "^0.1.9",
-    "@material/data-table": "^6.0.0",
     "core-js": "^3.6.4",
     "vee-validate": "^3.3.0",
     "vue": "^2.6.11",
