@@ -1,8 +1,6 @@
 <template>
   <div id="PersonalData">
-    <!-- {{ $v }} -->
-    <!-- {{ $store.getters.getPersonalDataState }} -->
-    <h1>Personal data of applicant</h1>
+    <h1 class="pageHeader">Personal data of applicant</h1>
     <div class="personalDataWrapper">
       <div class="extendedData">
         <h1 class="dataHeading">Extended data</h1>
@@ -31,21 +29,23 @@
               id="education"
             >
               <option value="Primary">Worker</option>
-              <option value="Primary">Specialist/Offise worker</option>
-              <option value="Primary">Superior specialist</option>
-              <option value="Primary">Middle manager</option>
-              <option value="Primary">Owner</option>
-              <option value="Primary">Student</option>
-              <option value="Primary">Pensioner</option>
-              <option value="Primary">HouseWife</option>
-              <option value="Primary">Unemployed</option>
-              <option value="Primary">Private entrepreneur</option>
+              <option value="pecialist/Offise worker"
+                >Specialist/Offise worker</option
+              >
+              <option value="Superior specialist">Superior specialist</option>
+              <option value="Middle manager">Middle manager</option>
+              <option value="Owner">Owner</option>
+              <option value="Student">Student</option>
+              <option value="Pensioner">Pensioner</option>
+              <option value="HouseWife">HouseWife</option>
+              <option value="Unemployed">Unemployed</option>
+              <option value="Private entrepreneur">Private entrepreneur</option>
             </select>
           </div>
         </div>
       </div>
       <div v-if="$v.position.$dirty" class="maritialStatus">
-        <h1>Personal data</h1>
+        <h1 class="dataHeading">Personal data</h1>
         <div class="dataWrapper">
           <label class="personalData-label">Maritial status *</label>
           <select
@@ -63,7 +63,7 @@
         </div>
       </div>
       <div v-if="$v.maritialStatus.$model == 'Married'" class="maritialStatus">
-        <h1>Spouse data</h1>
+        <h1 class="dataHeading">Spouse data</h1>
         <div class="dataWrapper">
           <label class="personalData-label">Spouse income *</label>
           <select
@@ -87,7 +87,7 @@
         "
         class="contactData"
       >
-        <h1>Contact data</h1>
+        <h1 class="dataHeading">Contact data</h1>
         <div class="dataWrapper">
           <div
             class="form-group"
@@ -101,12 +101,12 @@
               v-model.trim="$v.phone.$model"
             />
           </div>
-          <label class="personalData-label"></label>
+          <!-- <label class="personalData-label"></label> -->
           <div class="error-label" v-if="!$v.phone.required && $v.phone.$dirty">
             Phone is required.
           </div>
           <div class="error-label" v-if="!$v.phone.minLength">
-            phone must have at least
+            Phone must have at least
             {{ $v.phone.$params.minLength.min }} digits.
           </div>
         </div>
@@ -116,21 +116,20 @@
 </template>
 
 <script>
-
-import { required, minLength, requiredUnless } from 'vuelidate/lib/validators'
+import { required, minLength, requiredUnless } from "vuelidate/lib/validators";
 
 export default {
   computed: {
-    validation: function () {
-      return this.$v.$invalid
+    validation: function() {
+      return this.$v.$invalid;
     },
 
-    isOptional () {
-      return this.maritialStatus !== 'Married' // some conditional logic here...
+    isOptional() {
+      return this.maritialStatus !== "Married"; // some conditional logic here...
     }
   },
-  mounted () {
-    this.checkForm()
+  mounted() {
+    this.checkForm();
   },
   validations: {
     education: {
@@ -143,7 +142,7 @@ export default {
       required
     },
     spouseIncome: {
-      required: requiredUnless('isOptional')
+      required: requiredUnless("isOptional")
     },
     phone: {
       required,
@@ -151,83 +150,96 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       errors: [],
       education: null,
       position: null,
       spouseIncome: null,
       maritialStatus: null,
-      phone: null,
-    }
+      phone: null
+    };
   },
   methods: {
-    checkForm () {
-      this.$store.dispatch('setPersonalDataReady', this.$v.$invalid)
-      this.$store.dispatch('setPersonalData', {
+    checkForm() {
+      this.$store.dispatch("setPersonalDataReady", this.$v.$invalid);
+      this.$store.dispatch("setPersonalData", {
         education: this.education,
         position: this.position,
         maritialStatus: this.maritialStatus,
         phone: this.phone
-      })
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/styles/mixins.scss";
 #PersonalData {
-  h1 {
-    margin: 50px 50px 50px 10%;
-    color: #512b2b;
-  }
-// .dataHeading{
-
-// }
   .personalDataWrapper {
     padding-top: 0px;
     padding-right: 50px;
     padding-bottom: 50px;
     padding-left: 50px;
+    .dataHeading {
+      font-size: 25px;
+      margin: 0px 0px 0px 10%;
+    }
     .personalData-label {
       display: inline-block;
       width: 25%;
       text-align: right;
       padding-top: 15px;
-      // padding-bottom: 50px;
-      // color: #512b2b;
     }
     .dataWrapper {
       .buttons-label {
         display: inline-block;
         width: 25%;
         text-align: right;
-
-        // color: #512b2b;
       }
       .error-label {
         display: inline-block;
-        width: 25%;
+        text-align: right;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        margin-left: 25%;
+        padding-left: 1%;
+        font-size: 14px;
       }
     }
   }
-}
-
-@media screen and (max-width: 767px) {
-  .getLoan {
-    h1 {
-      font-size: 20px;
-      margin: 32px;
-    }
+  @include responsive("-md") {
     .personalDataWrapper {
       padding-top: 0px;
       padding-right: 32px;
       padding-bottom: 32px;
       padding-left: 32px;
+
+      .dataWrapper {
+        .error-label {
+          width: 100%;
+           margin-left: 0%;
+           text-align: left;
+        }
+      }
+
+      .dataHeading {
+        font-size: 15px;
+        margin: 5px 0px 0px 0px;
+        width: 100%;
+      }
+
       .personalData-label {
         width: 100%;
         text-align: left;
         font-size: 14px;
+      }
+      select {
+        width: 100%;
+      }
+      input {
+        width: 100%;
       }
     }
   }

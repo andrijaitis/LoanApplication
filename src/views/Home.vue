@@ -133,7 +133,7 @@ export default {
       color: #fff;
       border-radius: 3px;
       line-height: 18px;
-      font-family: SwedbankMedium, sans-serif;
+      font-family:  sans-serif;
       transition: color 0.3s ease-out;
       transition: border-color 0.3s ease-out;
       transition: background-color 0.3s ease-out;

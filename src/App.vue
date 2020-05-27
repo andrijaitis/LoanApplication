@@ -30,7 +30,13 @@ body {
 }
 
 .container-main {
-  width: unset !important;
+  max-width: $grid-width-2;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100% !important;
+  margin-right: auto;
+  margin-left: auto;
+
   .containerLoanIntro {
     background: #ffffff;
     background-size: cover;
@@ -38,7 +44,7 @@ body {
     margin: 10% 12%;
   }
   .pageHeader {
-    margin: 50px 50px 50px 10%;
+    margin: 50px 50px 32px 10%;
     color: #512b2b;
     // font-size: 20px;
     // margin: 32px 32px 0px 32px;
@@ -89,11 +95,10 @@ body {
   }
 
   @include responsive("-md") {
-  .pageHeader {
-    font-size: 20px;
-    margin: 32px 32px 0px 32px;
-  }
-
+    .pageHeader {
+      font-size: 20px;
+      margin: 32px 32px 0px 32px;
+    }
   }
 }
 </style>

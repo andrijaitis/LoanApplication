@@ -78,29 +78,25 @@ export default {
       return (100 / this.barData.totalPages) * this.barData.pageNumber;
     },
     formsReady: function() {
-      return this.getCoBorrowersState && !this.getPersonalDataState
+      return this.getCoBorrowersState && !this.getPersonalDataState;
     }
   },
   data() {
     return {
       // formsReady: false
     };
-  },
-
-  // mounted() {
-
-  // }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 #PersonalData {
   h1 {
-      margin: 50px 50px 50px 10%;
+    margin: 50px 50px 50px 10%;
     color: #512b2b;
   }
   h3 {
-      margin: 50px 50px 50px 10%;
+    margin: 50px 50px 50px 10%;
     color: #512b2b;
   }
   .tabblesWrapper {

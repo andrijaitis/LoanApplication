@@ -1,7 +1,7 @@
 <template>
   <div id="CoBorrowerData" @keyup="checkForm" @click="checkForm">
     <ValidationObserver ref="observer" v-slot="{ valid, invalid }">
-       <h1>Co-borrower`s</h1>
+      <h1 class="pageHeader">Co-borrower`s</h1>
       <div class="CoBorrowerDataWrapper">
         <div class="coBorrowersData">
           <div
@@ -9,7 +9,7 @@
             v-bind:key="borrower.id"
           >
             <div class="dataWrapper">
-              <h3>CoApplicant number {{ index + 1 }}</h3>
+              <h3 class="dataHeading">Co-applicant No. {{ index + 1 }}</h3>
               <label class="CoBorrowerData-label">First name *</label>
               <ValidationProvider
                 name="first name"
@@ -17,11 +17,12 @@
                 v-slot="{ errors, invalid }"
               >
                 <input
+                  class="applicantInput"
                   v-model="coBorrowers[index].firstName"
                   @keyup="coBorrowers[index].nameInvalid = invalid"
                   type="text"
                 />
-                <span>{{ errors[0] }}</span>
+                <label class="error-label">{{ errors[0] }}</label>
               </ValidationProvider>
             </div>
             <div v-if="!coBorrowers[index].nameInvalid" class="dataWrapper">
@@ -32,11 +33,12 @@
                 v-slot="{ errors, invalid }"
               >
                 <input
+                  class="applicantInput"
                   v-model="coBorrowers[index].lastName"
                   @keyup="coBorrowers[index].lastNameInvalid = invalid"
                   type="text"
                 />
-                <span>{{ errors[0] }}</span>
+                <label class="error-label">{{ errors[0] }}</label>
               </ValidationProvider>
             </div>
             <div
@@ -63,12 +65,15 @@
                 :rules="'min|required'"
                 v-slot="{ errors }"
               >
-                <input type="number" v-model="coBorrowers[index].code" />
-                <span>{{ errors[0] }}</span>
+                <input
+                  class="applicantInput"
+                  type="number"
+                  v-model="coBorrowers[index].code"
+                />
+                <label class="error-label">{{ errors[0] }}</label>
               </ValidationProvider>
             </div>
-            <div class="dataWrapper">
-              <label class="buttons-label"></label>
+            <div class="buttonsWrapper">
               <span @click="removeCoborrower(index)" class="removeAddButton">
                 <i class="fa fa-times-circle"></i>
                 <a>Remove Co-aplicant</a>
@@ -76,8 +81,7 @@
             </div>
           </div>
 
-          <div class="dataWrapper" :disabled="invalid">
-            <label class="buttons-label"></label>
+          <div class="buttonsWrapper" :disabled="invalid">
             <span @click="addCoborrower()" class="removeAddButton">
               <i class="fa fa-plus-circle"></i>
               <a>Add Co-aplicant</a>
@@ -94,10 +98,10 @@
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import { extend } from "vee-validate";
 
-extend("notNumber", (value) => {
+extend("notNumber", value => {
   function isNumeric(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n);
-}
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  }
   if (!isNumeric(value)) {
     return true;
   }
@@ -105,7 +109,7 @@ extend("notNumber", (value) => {
   return "The {_field_} field must not contain numbers";
 });
 
-extend("min", (value) => {
+extend("min", value => {
   if (value.length >= 5) {
     return true;
   }
@@ -118,21 +122,21 @@ extend("required", {
   validate(value) {
     return {
       required: true,
-      valid: ["", null, undefined].indexOf(value) === -1,
+      valid: ["", null, undefined].indexOf(value) === -1
     };
   },
-  computesRequired: true,
+  computesRequired: true
 });
 export default {
   components: {
     ValidationProvider,
-    ValidationObserver,
+    ValidationObserver
   },
 
   watch: {
     coBorrowers: function() {
       this.checkForm();
-    },
+    }
   },
 
   mounted() {
@@ -140,11 +144,11 @@ export default {
   },
   computed: {
     isFormDirty() {
-      return Object.keys(this.fields).some((key) => this.fields[key].dirty);
+      return Object.keys(this.fields).some(key => this.fields[key].dirty);
     },
     computedObserver() {
       return this.$refs.observer.flags.valid;
-    },
+    }
   },
   data() {
     return {
@@ -160,7 +164,7 @@ export default {
       education: null,
       position: null,
       maritialStatus: null,
-      phone: null,
+      phone: null
     };
   },
   methods: {
@@ -186,46 +190,57 @@ export default {
         country: "LT",
         code: "",
         nameInvalid: true,
-        lastNameInvalid: true,
+        lastNameInvalid: true
       });
       this.coBorrowersIndex = this.coBorrowersIndex + 1;
     },
 
     removeCoborrower(index) {
-      console.log("id",index)
-      // let elementIndex = this.coBorrowers.findIndex((x) => x.id === id);
-      // console.log(elementIndex)
-      // this.coBorrowers.splice(id , 1);
-     this.coBorrowers.splice(index , 1)
-     console.log(this.coBorrowers[index])
-    },
-  },
+      this.coBorrowers.splice(index, 1);
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-#CoBorrowerData {
-  h1 {
-      margin: 50px 50px 50px 10%;
-    color: #512b2b;
-  }
+@import "../assets/styles/mixins.scss";
 
+#CoBorrowerData {
   .CoBorrowerDataWrapper {
     padding-top: 0px;
     padding-right: 50px;
     padding-bottom: 50px;
     padding-left: 50px;
+
+    .dataHeading {
+      font-size: 25px;
+      margin: 0px 0px 0px 10%;
+    }
     .CoBorrowerData-label {
       display: inline-block;
       width: 25%;
       text-align: right;
       padding-top: 15px;
-      // padding-bottom: 50px;
-      // color: #512b2b;
     }
+
     .dataWrapper {
-      .removeAddButton{
-        &:hover{
+      .error-label {
+        display: inline-block;
+        text-align: left;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        margin-left: 25%;
+        padding-left: 1%;
+        font-size: 14px;
+        color: unset;
+        width: 100%;
+      }
+    }
+    .buttonsWrapper {
+      margin-left: 25%;
+      padding-left: 1%;
+      .removeAddButton {
+        &:hover {
           cursor: pointer;
         }
       }
@@ -233,29 +248,58 @@ export default {
         display: inline-block;
         width: 25%;
         text-align: right;
-        // padding-top: 15px;
-        // padding-bottom: 50px;
-        // color: #512b2b;
       }
+
       .error-label {
         display: inline-block;
-        width: 25%;
+        text-align: left;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        margin-left: 25%;
+        padding-left: 1%;
+        font-size: 14px;
+        color: unset;
+        width: 100%;
       }
     }
   }
-}
-
-@media screen and (max-width: 767px) {
-  .getLoan {
-    h1 {
-      font-size: 20px;
-      margin: 32px;
-    }
+  @include responsive("-md") {
     .CoBorrowerDataWrapper {
       padding-top: 0px;
       padding-right: 32px;
       padding-bottom: 32px;
       padding-left: 32px;
+      .dataWrapper {
+        .applicantInput {
+          width: 100%;
+        }
+        .error-label {
+          width: 100%;
+          margin-left: 0%;
+          text-align: left;
+        }
+        .buttons-label {
+          width: 100%;
+        }
+      }
+      .buttonsWrapper {
+        margin-left: 0%;
+        padding-left: 0%;
+        .error-label {
+          width: 100%;
+          margin-left: 0%;
+          text-align: left;
+        }
+        .buttons-label {
+          width: 100%;
+        }
+      }
+      .dataHeading {
+        font-size: 15px;
+        margin: 5px 0px 0px 0px;
+        width: 100%;
+      }
+
       .CoBorrowerData-label {
         width: 100%;
         text-align: left;
