@@ -56,7 +56,8 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+@import "../assets/styles/mixins.scss";
 #progressbar {
   .bar {
     background-color: #f35b1c;
@@ -98,6 +99,11 @@ export default {
       background: gray;
       border: 1px solid #afadab;
     }
+  
   }
+    @include responsive("-md") {
+      display: flex;
+    flex-direction: column;
+    }
 }
 </style>

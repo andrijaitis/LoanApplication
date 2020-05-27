@@ -203,10 +203,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #CoBorrowerData {
   h1 {
-    margin: 50px;
+      margin: 50px 50px 50px 10%;
     color: #512b2b;
   }
 
@@ -221,7 +221,7 @@ export default {
       text-align: right;
       padding-top: 15px;
       // padding-bottom: 50px;
-      color: #512b2b;
+      // color: #512b2b;
     }
     .dataWrapper {
       .removeAddButton{
@@ -235,7 +235,7 @@ export default {
         text-align: right;
         // padding-top: 15px;
         // padding-bottom: 50px;
-        color: #512b2b;
+        // color: #512b2b;
       }
       .error-label {
         display: inline-block;

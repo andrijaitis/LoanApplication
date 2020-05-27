@@ -1,13 +1,13 @@
 <template>
   <div class="Calculator">
-    <h1>Calculate your loan possibilities</h1>
+    <h1 class="pageHeader">Calculate your loan possibilities</h1>
 
     <div class="calculatorWrapper">
       <div class="sliderWrapper">
         <label class="slider-label">Your/family income</label>
         <vue-slider
           id="income"
-          style="width: 70%;"
+          style="width: 65%;"
           :min="350"
           :max="5000"
           :interval="50"
@@ -36,7 +36,7 @@
         >
         <vue-slider
           id="expenses"
-          style="width: 70%;"
+          style="width: 65%;"
           :min="0"
           :max="1000"
           :tooltip="'always'"
@@ -61,7 +61,7 @@
         <label class="slider-label">Loan amount</label>
         <vue-slider
           id="amount"
-          style="width: 70%;"
+          style="width: 65%;"
           :min="500"
           :max="20000"
           :interval="100"
@@ -88,7 +88,7 @@
         <label class="slider-label">Term</label>
         <vue-slider
           id="terms"
-          style="width: 70%;"
+          style="width: 65%;"
           :min="1"
           :max="5"
           :tooltip="'always'"
@@ -122,7 +122,7 @@ export default {
   data() {
     return {
       calcValues: {
-        loanValue: 1500,
+        loanValue: 500,
         incomeValue: 350,
         expensesValue: 0,
         termValue: 1,
@@ -161,8 +161,8 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
+<style lang="scss" >
+@import "../assets/styles/mixins.scss";
 .Calculator {
   .vue-slider-dot-tooltip-inner {
     background: #ee7023;
@@ -171,10 +171,11 @@ export default {
   .vue-slider-process {
     background-color: #ee7023;
   }
-  h1 {
-    margin: 50px;
-    color: #512b2b;
-  }
+  // h1 {
+  //     margin: 50px 50px 50px 10%;
+  //   color: #512b2b;
+  // }
+  
   .calculator-results {
     .slider-label {
       display: inline-block;
@@ -209,19 +210,17 @@ export default {
     .sliderWrapper {
       .vue-slider {
         margin-left: 5%;
-        width: 700%;
+        width: 75%;
         display: inline-block;
+        // display: flex;
       }
     }
   }
 }
-
-@media screen and (max-width: 767px) {
+@include responsive("-md") {
+// @media screen and (max-width: 767px) {
   .getLoan {
-    h1 {
-      font-size: 20px;
-      margin: 32px;
-    }
+ 
     .calculatorWrapper {
       padding-top: 0px;
       padding-right: 32px;
@@ -231,6 +230,7 @@ export default {
         width: 100%;
         text-align: left;
         font-size: 14px;
+           padding-top: 20px;
       }
       .sliderWrapper {
         .vue-slider {

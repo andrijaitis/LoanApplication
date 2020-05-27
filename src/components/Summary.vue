@@ -93,10 +93,14 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #PersonalData {
   h1 {
-    margin: 50px;
+      margin: 50px 50px 50px 10%;
+    color: #512b2b;
+  }
+  h3 {
+      margin: 50px 50px 50px 10%;
     color: #512b2b;
   }
   .tabblesWrapper {

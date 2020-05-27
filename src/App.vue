@@ -9,49 +9,12 @@
 </template>
 
 <style lang="scss">
-@mixin responsive($breakpoint) {
-  @if $breakpoint == "xxxxs" {
-    @media (max-width: 358px) {
-      @content;
-    }
-  }
+@import "./assets/styles/mixins.scss";
 
-  /* Extra small devices (phones, 600px and down) */
-  @if $breakpoint == "xs" {
-    @media (max-width: 600px) {
-      @content;
-    }
-  }
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @if $breakpoint == "xs" {
-    @media (min-width: 600px) {
-      @content;
-    }
-  }
-  /* Medium devices (landscape tablets, 768px and up) */
-  @if $breakpoint == "xs" {
-    @media (min-width: 768px) {
-      @content;
-    }
-  }
-  /* Large devices (laptops/desktops, 992px and up) */
-  @if $breakpoint == "xs" {
-    @media (min-width: 992px) {
-      @content;
-    }
-  }
-  /* Extra large devices (large laptops and desktops, 1200px and up) */
-  @if $breakpoint == "xs" {
-    @media (min-width: 1200px) {
-      @content;
-    }
-  }
-}
 $font-base: "Open Sans", sans-serif;
 
 $grid-width: 1140px;
 $gutter-width: 30px;
-
 $grid-width-2: 1350px;
 
 body {
@@ -66,65 +29,71 @@ body {
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-
-// .container-main {
-//   // background: #fbf2ea;
-//   // width: 100% !important;
-//   // margin-right: auto;
-//   // margin-left: auto;
-//   // max-width: $grid-width;
-//   // padding-right: ($gutter-width / 2);
-//   // padding-left: ($gutter-width / 2);
-//   // &:before {
-//   //   display: none !important;
-//   // }
-//   // &:after {
-//   //   display: none !important;
-//   // }
-// }
-
 .container-main {
   width: unset !important;
-  // height: 82vh;
-
   .containerLoanIntro {
-    // width: 75%;
-
-    @include responsive("xxs") {
-    }
-    @include responsive("xxs-xs") {
-    }
-
     background: #ffffff;
     background-size: cover;
-
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
-    // background-repeat: no-repeat;
     margin: 10% 12%;
+  }
+  .pageHeader {
+    margin: 50px 50px 50px 10%;
+    color: #512b2b;
+    // font-size: 20px;
+    // margin: 32px 32px 0px 32px;
+  }
+
+  select {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    border: 1px solid #bcd8db;
+    border-radius: 3px;
+    background-color: #ebf8f2;
+    padding: 2px 2px 2px 2px;
+    font-size: 15px;
+    // text-align: left;
+    // word-break: break-word;
+    // box-sizing: border-box;
     // display: flex;
+    // flex-wrap: wrap;
+    // align-content: flex-start;
+    // align-items: center;
+    // margin: 0;
+    // width: 100%;
+    // height: 100%;
+    // background-color: #fff;
+    // padding: 12px 10px 12px 10px;
+  }
 
-    @include responsive("xs") {
-      // background-position-y: 260px;
-      // background-size: 100%;
-      // justify-content: center;
-    }
+  label {
+    margin-right: 7px;
+    color: #a38b80;
+    display: inline-block;
+    padding: 0;
+    font-size: 15px;
+  }
 
-    @include responsive("sm") {
-      // background-position-x: center;
-      // justify-content: flex-start;
-    }
+  input {
+    line-height: 18px;
+    border: 1px solid #bcd8db;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #512b2b;
+    background-color: #fff;
+    -webkit-appearance: none;
+    font-size: 15px;
+    padding: 2px 2px 2px 2px;
+    margin-top: -11px;
+    border-color: #8acdc3;
+  }
+
+  @include responsive("-md") {
+  .pageHeader {
+    font-size: 20px;
+    margin: 32px 32px 0px 32px;
+  }
+
   }
 }
 </style>

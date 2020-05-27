@@ -9,22 +9,12 @@
       v-if="!getFormSubmited"
       v-bind:barData="{
         pageNumber: step,
-        totalPages: totalPages,
+        totalPages: totalPages
       }"
       @goBack="goBack()"
       @goForward="goForward()"
       @submit="submitForm()"
     ></ProgressBar>
-    <!-- <div class="calculator-results">
-      <div class="block">
-        <label>Monthly payment</label>
-        <p class="results">{{maxLoanAmount}} <span>eur</span></p>
-      </div>
-      <div class="block">
-        <label>Max. loan amount</label>
-        <p class="results">{{monthlyPayment}} <span>eur</span></p>
-      </div>
-    </div> -->
   </div>
 </template>
 <script>
@@ -42,10 +32,10 @@ export default {
     PersonalData,
     Summary,
     FormSubmited,
-    CoBorrower,
+    CoBorrower
   },
   computed: {
-    ...mapGetters(["getFormSubmited"]),
+    ...mapGetters(["getFormSubmited"])
   },
   methods: {
     submitForm() {
@@ -64,7 +54,7 @@ export default {
       } else {
         this.step = this.step + 1;
       }
-    },
+    }
   },
   data() {
     return {
@@ -81,11 +71,11 @@ export default {
       termValue: 1,
       incomeMarks: {
         "350": {
-          label: "350 €",
+          label: "350 €"
         },
         "5000": {
-          label: "5000 €",
-        },
+          label: "5000 €"
+        }
       },
       termMarks: {
         "1": "1 y.",
@@ -93,7 +83,7 @@ export default {
         "3": "",
         "4": "",
         "5": {
-          label: "5 y.",
+          label: "5 y."
           // style: {
           //   width: "8px",
           //   height: "8px",
@@ -101,35 +91,20 @@ export default {
           //   backgroundColor: "red",
           //   transform: "translate(-2px, -2px)",
           // },
-        },
-      },
+        }
+      }
     };
-  },
+  }
 };
 </script>
 
 <style lang="scss">
+@import "../assets/styles/mixins.scss";
 .getLoan {
   width: 100%;
   background-color: #f3f4f6;
   padding: 1px 0;
   margin-top: 50px;
   text-align: left;
-
-  .calculator-results {
-    .slider-label {
-      display: inline-block;
-      width: 140px;
-      text-align: left;
-    }
-    .results {
-      display: inline-block;
-    }
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .getLoan {
-  }
 }
 </style>

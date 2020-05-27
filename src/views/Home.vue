@@ -44,10 +44,12 @@
 
 <script>
 export default {
-  name: "Home",
+  name: "Home"
 };
 </script>
+
 <style lang="scss">
+@import "../assets/styles/mixins.scss";
 .home {
   width: 100%;
   background-color: #f3f4f6;
@@ -65,7 +67,6 @@ export default {
   }
 
   ul li {
-    // margin: 15px;
     position: relative;
   }
   ul li:before {
@@ -88,7 +89,7 @@ export default {
     font: 32px/32px HeadlineBlack, Arial, sans-serif;
     font-weight: 700;
     margin-left: 25px;
-    padding-top: 20px;
+    // padding-top: 20px;
     margin-bottom: 10px;
   }
   h2 {
@@ -154,7 +155,8 @@ export default {
     }
   }
 }
-@media screen and (max-width: 767px) {
+
+@include responsive("xs") {
   .home {
     p {
       font-size: 15px;

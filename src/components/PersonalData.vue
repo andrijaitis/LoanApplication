@@ -5,7 +5,7 @@
     <h1>Personal data of applicant</h1>
     <div class="personalDataWrapper">
       <div class="extendedData">
-        <h1>Extended data</h1>
+        <h1 class="dataHeading">Extended data</h1>
         <div class="dataWrapper">
           <label class="personalData-label">Education *</label>
           <select
@@ -72,10 +72,10 @@
             name="spouseIncome"
             id="spouseIncome"
           >
-            <option value="500">less then 1000</option>
-            <option value="1000">1000</option>
-            <option value="2000">2000</option>
-            <option value="3000">more than 2000</option>
+            <option value="500">Less than 1000 €</option>
+            <option value="1000">1000 €</option>
+            <option value="2000">2000 €</option>
+            <option value="3000">More than 2000 €</option>
           </select>
         </div>
       </div>
@@ -93,7 +93,7 @@
             class="form-group"
             :class="{ 'form-group--error': $v.phone.$error }"
           >
-            <label class="personalData-label">phone *</label>
+            <label class="personalData-label">Phone *</label>
             <input
               @keyup="checkForm"
               class="form__input"
@@ -103,11 +103,11 @@
           </div>
           <label class="personalData-label"></label>
           <div class="error-label" v-if="!$v.phone.required && $v.phone.$dirty">
-            phone is required.
+            Phone is required.
           </div>
           <div class="error-label" v-if="!$v.phone.minLength">
             phone must have at least
-            {{ $v.phone.$params.minLength.min }} numbers.
+            {{ $v.phone.$params.minLength.min }} digits.
           </div>
         </div>
       </div>
@@ -116,8 +116,7 @@
 </template>
 
 <script>
-// import { ValidationProvider, extend } from "vee-validate";
-// import { required } from "vee-validate/dist/rules";
+
 import { required, minLength, requiredUnless } from 'vuelidate/lib/validators'
 
 export default {
@@ -152,9 +151,6 @@ export default {
     }
   },
 
-  // components: {
-  //   ValidationProvider,
-  // },
   data () {
     return {
       errors: [],
@@ -179,13 +175,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #PersonalData {
   h1 {
-    margin: 50px;
+    margin: 50px 50px 50px 10%;
     color: #512b2b;
   }
+// .dataHeading{
 
+// }
   .personalDataWrapper {
     padding-top: 0px;
     padding-right: 50px;
@@ -197,16 +195,15 @@ export default {
       text-align: right;
       padding-top: 15px;
       // padding-bottom: 50px;
-      color: #512b2b;
+      // color: #512b2b;
     }
     .dataWrapper {
       .buttons-label {
         display: inline-block;
         width: 25%;
         text-align: right;
-        // padding-top: 15px;
-        // padding-bottom: 50px;
-        color: #512b2b;
+
+        // color: #512b2b;
       }
       .error-label {
         display: inline-block;
