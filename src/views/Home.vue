@@ -126,14 +126,13 @@ export default {
 
   article {
     order: 1;
-    // margin-right: 10px;
     .loan-btn {
       align-items: center;
       cursor: pointer;
       color: #fff;
       border-radius: 3px;
       line-height: 18px;
-      font-family:  sans-serif;
+      font-family: sans-serif;
       transition: color 0.3s ease-out;
       transition: border-color 0.3s ease-out;
       transition: background-color 0.3s ease-out;
@@ -187,9 +186,6 @@ export default {
         width: unset;
         top: 0px;
         margin-bottom: 15px;
-        img {
-          // transform: translateY(0%);
-        }
       }
     }
   }

@@ -111,11 +111,11 @@ export default {
   watch: {
     calcValues: {
       handler(val) {
-           this.$store.dispatch("setCalcData", val);
-      this.$store.dispatch("setCalcState", true);
+        this.$store.dispatch("setCalcData", val);
+        this.$store.dispatch("setCalcState", true);
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
 
   methods: {},
@@ -125,7 +125,7 @@ export default {
         loanValue: 500,
         incomeValue: 350,
         expensesValue: 0,
-        termValue: 1,
+        termValue: 1
       },
       monthlyPayment: 0,
       maxLoanAmount: 0,
@@ -135,11 +135,11 @@ export default {
 
       incomeMarks: {
         "350": {
-          label: "350 €",
+          label: "350 €"
         },
         "5000": {
-          label: "5000 €",
-        },
+          label: "5000 €"
+        }
       },
       termMarks: {
         "1": "1 y.",
@@ -147,7 +147,7 @@ export default {
         "3": "",
         "4": "",
         "5": {
-          label: "5 y.",
+          label: "5 y."
           // style: {
           //   width: "8px",
           //   height: "8px",
@@ -155,13 +155,13 @@ export default {
           //   backgroundColor: "red",
           //   transform: "translate(-2px, -2px)",
           // },
-        },
-      },
+        }
+      }
     };
-  },
+  }
 };
 </script>
-<style lang="scss" >
+<style lang="scss">
 @import "../assets/styles/mixins.scss";
 .Calculator {
   .vue-slider-dot-tooltip-inner {
@@ -171,11 +171,7 @@ export default {
   .vue-slider-process {
     background-color: $main-color;
   }
-  // h1 {
-  //     margin: 50px 50px 50px 10%;
-  //   color: $secondary-color;
-  // }
-  
+
   .calculator-results {
     .slider-label {
       display: inline-block;
@@ -218,9 +214,7 @@ export default {
   }
 }
 @include responsive("-md") {
-// @media screen and (max-width: 767px) {
   .getLoan {
- 
     .calculatorWrapper {
       padding-top: 0px;
       padding-right: 32px;
@@ -230,7 +224,7 @@ export default {
         width: 100%;
         text-align: left;
         font-size: 14px;
-           padding-top: 20px;
+        padding-top: 20px;
       }
       .sliderWrapper {
         .vue-slider {

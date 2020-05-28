@@ -45,8 +45,6 @@ body {
   .pageHeader {
     margin: 50px 50px 32px 10%;
     color: #512b2b;
-    // font-size: 20px;
-    // margin: 32px 32px 0px 32px;
   }
 
   select {
@@ -57,18 +55,6 @@ body {
     background-color: #ebf8f2;
     padding: 2px 2px 2px 2px;
     font-size: 15px;
-    // text-align: left;
-    // word-break: break-word;
-    // box-sizing: border-box;
-    // display: flex;
-    // flex-wrap: wrap;
-    // align-content: flex-start;
-    // align-items: center;
-    // margin: 0;
-    // width: 100%;
-    // height: 100%;
-    // background-color: #fff;
-    // padding: 12px 10px 12px 10px;
   }
 
   label {

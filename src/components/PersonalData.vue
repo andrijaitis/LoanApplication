@@ -219,8 +219,8 @@ export default {
       .dataWrapper {
         .error-label {
           width: 100%;
-           margin-left: 0%;
-           text-align: left;
+          margin-left: 0%;
+          text-align: left;
         }
       }
 

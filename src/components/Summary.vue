@@ -21,14 +21,14 @@
           <td>{{ getFullPersonalData.maritialStatus }}</td>
         </tr>
         <tr>
-          <td>Phone}</td>
+          <td>Phone</td>
           <td>{{ getFullPersonalData.phone }}</td>
         </tr>
       </table>
 
       <h2>Loan</h2>
       <table>
-              <tr>
+        <tr>
           <th>Data</th>
           <th>Value</th>
         </tr>
@@ -49,10 +49,10 @@
           v-bind:key="borrower.id"
         >
           <h3 for="">Co-applicant No. {{ index + 1 }}</h3>
-                <tr>
-          <th>Data</th>
-          <th>Value</th>
-        </tr>
+          <tr>
+            <th>Data</th>
+            <th>Value</th>
+          </tr>
           <tr>
             <td>First name</td>
             <td>{{ borrower.firstName }}</td>
@@ -101,7 +101,6 @@ export default {
 @import "../assets/styles/mixins.scss";
 #PersonalData {
   h3 {
-
     color: $secondary-color;
   }
   .tabblesWrapper {
@@ -122,28 +121,23 @@ export default {
       padding: 8px;
       width: 25%;
     }
-
-    // tr:nth-child(even) {
-    //   background-color: #dddddd;
-    // }
   }
-@include responsive("-md") {
-  table{
-    font-size:      12px;
-  }
-  h2{
-    font-size: 15px;
-  }
-  h3{
-    font-size: 3vw;
-  }
+  @include responsive("-md") {
+    table {
+      font-size: 12px;
+    }
+    h2 {
+      font-size: 15px;
+    }
+    h3 {
+      font-size: 3vw;
+    }
 
     .tabblesWrapper {
       padding-top: 0px;
       padding-right: 32px;
       padding-bottom: 32px;
       padding-left: 32px;
-      
     }
   }
 }

@@ -108,10 +108,9 @@ export default {
     @include responsive("-md") {
       display: flex;
       flex-direction: column;
- 
+
       padding-left: 22px;
       padding-right: 22px;
- 
     }
   }
 }

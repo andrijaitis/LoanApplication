@@ -26,14 +26,13 @@ export default {};
     }
     img {
       height: 50px;
-          padding: 25px;
-
+      padding: 25px;
     }
     @include responsive("-md") {
       h1 {
         font-size: 20px;
         margin: 32px;
-         margin-bottom: 0px;
+        margin-bottom: 0px;
       }
     }
   }
