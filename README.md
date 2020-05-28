@@ -11,6 +11,7 @@ Due to the scope of the task I choce to proceed this task with **Vue.js** framew
 
 The example online had only three steps. In order to have four steps that are mandatory I decided to split personal details into two parts. This the reason why Co-applicants have their own tab.  
 In order to fulfill requirments to have **one question at the time** I used multiple validation libraries instead of writing my own validators.
+Due to lack of time it was only tested on Google chrome
 
 # Installation
 

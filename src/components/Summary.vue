@@ -1,6 +1,6 @@
 <template>
   <div id="PersonalData">
-    <h1>Summary</h1>
+    <h1 class="pageHeader">Summary</h1>
     <div v-if="formsReady" class="tabblesWrapper">
       <h2>Personal Data</h2>
       <table>
@@ -28,34 +28,42 @@
 
       <h2>Loan</h2>
       <table>
-        <tr>
-          <th>Loan ammount</th>
-          <th>{{ getCalcData.loanValue }}</th>
+              <tr>
+          <th>Data</th>
+          <th>Value</th>
         </tr>
         <tr>
-          <th>Loan period</th>
-          <th>{{ getCalcData.termValue }}</th>
+          <td>Loan ammount</td>
+          <td>{{ getCalcData.loanValue }}</td>
+        </tr>
+        <tr>
+          <td>Loan period</td>
+          <td>{{ getCalcData.termValue }}</td>
         </tr>
       </table>
 
       <div v-if="getCoBorrowers.length">
-        <h2>Co borrowers</h2>
+        <h2>Co-applicants</h2>
         <table
           v-for="(borrower, index) in getCoBorrowers"
           v-bind:key="borrower.id"
         >
-          <h3 for="">Co-applicant {{ index + 1 }}</h3>
+          <h3 for="">Co-applicant No. {{ index + 1 }}</h3>
+                <tr>
+          <th>Data</th>
+          <th>Value</th>
+        </tr>
           <tr>
-            <th>First name</th>
-            <th>{{ borrower.firstName }}</th>
+            <td>First name</td>
+            <td>{{ borrower.firstName }}</td>
           </tr>
           <tr>
-            <th>Last name</th>
-            <th>{{ borrower.lastName }}</th>
+            <td>Last name</td>
+            <td>{{ borrower.lastName }}</td>
           </tr>
           <tr>
-            <th>Code</th>
-            <th>{{ borrower.country }}{{ borrower.code }}</th>
+            <td>Code</td>
+            <td>{{ borrower.country }}{{ borrower.code }}</td>
           </tr>
         </table>
       </div>
@@ -90,20 +98,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/styles/mixins.scss";
 #PersonalData {
-  h1 {
-    margin: 50px 50px 50px 10%;
-    color: #512b2b;
-  }
   h3 {
-    margin: 50px 50px 50px 10%;
-    color: #512b2b;
+
+    color: $secondary-color;
   }
   .tabblesWrapper {
     padding-top: 0px;
-    padding-right: 50px;
-    padding-bottom: 50px;
-    padding-left: 50px;
+    padding-right: 10%;
+    padding-bottom: 10%;
+    padding-left: 10%;
     table {
       font-family: arial, sans-serif;
       border-collapse: collapse;
@@ -122,16 +127,23 @@ export default {
     //   background-color: #dddddd;
     // }
   }
-  @media screen and (max-width: 767px) {
-    h1 {
-      font-size: 20px;
-      margin: 32px;
-    }
+@include responsive("-md") {
+  table{
+    font-size:      12px;
+  }
+  h2{
+    font-size: 15px;
+  }
+  h3{
+    font-size: 3vw;
+  }
+
     .tabblesWrapper {
       padding-top: 0px;
       padding-right: 32px;
       padding-bottom: 32px;
       padding-left: 32px;
+      
     }
   }
 }

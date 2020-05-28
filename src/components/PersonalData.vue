@@ -184,7 +184,7 @@ export default {
     padding-left: 50px;
     .dataHeading {
       font-size: 25px;
-      margin: 0px 0px 0px 10%;
+      margin: 10px 0px 10px 10%;
     }
     .personalData-label {
       display: inline-block;

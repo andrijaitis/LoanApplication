@@ -165,15 +165,15 @@ export default {
 @import "../assets/styles/mixins.scss";
 .Calculator {
   .vue-slider-dot-tooltip-inner {
-    background: #ee7023;
-    border-color: #ee7023;
+    background: $main-color;
+    border-color: $main-color;
   }
   .vue-slider-process {
-    background-color: #ee7023;
+    background-color: $main-color;
   }
   // h1 {
   //     margin: 50px 50px 50px 10%;
-  //   color: #512b2b;
+  //   color: $secondary-color;
   // }
   
   .calculator-results {
@@ -198,7 +198,7 @@ export default {
       text-align: right;
       padding-top: 15px;
       padding-bottom: 50px;
-      color: #512b2b;
+      color: $secondary-color;
     }
     .customLabel-left {
       left: 0%;

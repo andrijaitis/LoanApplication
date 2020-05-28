@@ -1,3 +1,7 @@
+// Mixins and variables
+$main-color: #ee7023;
+$secondary-color: #512b2b;
+
 @mixin responsive($breakpoint) {
     /* Extra small devices (phones, 600px and down) */
     @if $breakpoint == "xs" {

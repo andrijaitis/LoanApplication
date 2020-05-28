@@ -78,7 +78,7 @@ export default {
     top: 3px;
     left: -10px;
     text-align: center;
-    background: #ee7023;
+    background: $main-color;
     border-radius: 0 12px 12px 0;
     -moz-border-radius: 0 12px 12px 0;
     -webkit-border-radius: 0 12px 12px 0;
@@ -137,8 +137,8 @@ export default {
       transition: color 0.3s ease-out;
       transition: border-color 0.3s ease-out;
       transition: background-color 0.3s ease-out;
-      background: none #ee7023;
-      border: 1px solid #ee7023;
+      background: none $main-color;
+      border: 1px solid $main-color;
       display: inline-block;
       -webkit-appearance: none;
       text-decoration: none;
@@ -149,7 +149,7 @@ export default {
       font-size: 18px;
       margin: -11px 0;
       &:hover {
-        border: 1px solid #ee7023;
+        border: 1px solid $main-color;
         background: #f35b1c;
       }
     }

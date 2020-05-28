@@ -78,8 +78,8 @@ export default {
       transition: color 0.3s ease-out;
       transition: border-color 0.3s ease-out;
       transition: background-color 0.3s ease-out;
-      background: none #ee7023;
-      border: 1px solid #ee7023;
+      background: none $main-color;
+      border: 1px solid $main-color;
       display: inline-block;
       -webkit-appearance: none;
       text-decoration: none;
@@ -91,7 +91,7 @@ export default {
       margin: -11px 0;
       margin: 0px 10px 10px 10px;
       &:hover {
-        border: 1px solid #ee7023;
+        border: 1px solid $main-color;
         background: #f35b1c;
       }
       &.backtBtn {

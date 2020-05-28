@@ -4,7 +4,7 @@
     <PersonalData v-show="step == 2 && !getFormSubmited"></PersonalData>
     <CoBorrower v-show="step == 3 && !getFormSubmited"></CoBorrower>
     <Summary v-show="step == 4 && !getFormSubmited"></Summary>
-    <FormSubmited v-show="getFormSubmited"></FormSubmited>
+    <FormSubmitted v-show="getFormSubmited"></FormSubmitted>
     <ProgressBar
       v-if="!getFormSubmited"
       v-bind:barData="{
@@ -23,7 +23,7 @@ import ProgressBar from "@/components/ProgressBar.vue";
 import Calculator from "@/components/Calculator.vue";
 import PersonalData from "@/components/PersonalData.vue";
 import Summary from "@/components/Summary.vue";
-import FormSubmited from "@/components/FormSubmited.vue";
+import FormSubmitted from "@/components/FormSubmitted.vue";
 import CoBorrower from "@/components/CoBorrower.vue";
 export default {
   components: {
@@ -31,7 +31,7 @@ export default {
     Calculator,
     PersonalData,
     Summary,
-    FormSubmited,
+    FormSubmitted,
     CoBorrower
   },
   computed: {
